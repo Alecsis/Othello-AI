@@ -1,0 +1,7 @@
+README.md
+setup.py
+gym_othello.egg-info/PKG-INFO
+gym_othello.egg-info/SOURCES.txt
+gym_othello.egg-info/dependency_links.txt
+gym_othello.egg-info/requires.txt
+gym_othello.egg-info/top_level.txt
