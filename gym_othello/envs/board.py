@@ -123,7 +123,7 @@ class Board():
                 if success:
                     actions.append(action)
         if len(actions) == 0:
-            actions.append(-1)  # pass
+            actions.append(64)  # pass
         return actions
 
     def is_action_valid(self, t_action, t_player_id) -> bool:
