@@ -63,11 +63,12 @@ def get(i: int, j: int) -> int:
 if __name__ == "__main__":
     # Open environment
     env = gym.make("othello-v0")
+    print(env.action_space.n, env.observation_space.shape)
 
     # Create agents
     agent = Agent(env.action_space, env.observation_space)
 
-    test_board()
+    # test_board()
 
     # Close environment
     env.close()

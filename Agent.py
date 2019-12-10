@@ -1,10 +1,7 @@
 import random
 import numpy as np
 from gym import error, spaces, utils
-import keras
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-from keras.engine.sequential import Sequential
-
+import tensorflow as tf
 
 class Agent():
     """
@@ -18,15 +15,15 @@ class Agent():
             t_observation_space.shape, t_action_space.shape)
 
     def make_model(self, t_input_shape, t_output_shape):
-        model = Sequential()
-        model.add(Conv2D(64, kernel_size=(5, 5), strides=(1, 1),
-                  activaton='relu', input_shape=t_input_shape))
-        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-        model.add(Conv2D(128, (5, 5), activation='relu'))
-        model.add(Flatten())
-        model.add(Dense(1000, activation = 'relu'))
-        model.add(Dense(t_output_shape[0]))
-        model.compile(  loss=keras.losses.categorical_crossentropy,
+        model = tf.keras.Sequential()
+        model.add(tf.keras.layers.Conv2D(64, kernel_size=(5, 5), strides=(1, 1),
+                  activation='relu', input_shape=(8,8,1)))
+        model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+        model.add(tf.keras.layers.Conv2D(128, (5, 5), activation='relu'))
+        model.add(tf.keras.layers.Flatten())
+        model.add(tf.keras.layers.Dense(1000, activation = 'relu'))
+        model.add(tf.keras.layers.Dense(t_output_shape[0]))
+        model.compile(  loss=tf.keras.losses.categorical_crossentropy,
                         optimizer=keras.optimizers.SGD(learning_rate=0.01),
                         metrics=['accuracy'])
         
