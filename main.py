@@ -59,19 +59,6 @@ def test_board():
 def get(i: int, j: int) -> int:
     return i * 8 + j
 
-def qlearning():
-    # S: current state
-    # A: current action
-    # S': state after A
-    # a: learning rate
-    a = 0.9
-    # y: discount factor
-    y = 0.95
-    # maxaQ(S',A): highest Q value for any move in the next state S'
-    #   ie. the Q value of the best move
-    # Q(S,A) = Q(S,A) + a*(y*maxaQ(S',a) - Q(S,A))
-    # Q(S,A) = (1-a)*Q(S,A)+a*y*maxaQ(S',a)
-    pass
 
 if __name__ == "__main__":
     # Open environment
