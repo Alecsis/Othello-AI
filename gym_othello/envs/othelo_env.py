@@ -40,6 +40,7 @@ class OthelloEnv(gym.Env):
                 if cell == self.current_player_id:
                     reward += 1
         except IllegalMove:
+            observation = self.board.linearize()
             # lose
             done = True
             reward = -1

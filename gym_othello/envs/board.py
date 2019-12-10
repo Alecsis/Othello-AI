@@ -133,6 +133,9 @@ class Board():
         if not self.is_action_valid(t_action, t_player_id):
             raise IllegalMove()
 
+        if t_action == 64:
+            return
+
         l = t_action // self.GRID_SIZE
         c = t_action % self.GRID_SIZE
 
