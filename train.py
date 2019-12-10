@@ -26,7 +26,7 @@ def eval_agent(t_player_1: Agent, t_games_number: int):
             if done:
                 break
             # Player 2
-            action = random.choice(env.board.list_actions(2))
+            action = random.choice(env.board.list_actions(-1))
             # print(action)
             observation, reward, done, _ = env.step(action)
             score2 = reward
@@ -53,10 +53,7 @@ def test_board():
         action = random.choice(possible_actions)
         board.do_action(action, player_id)
         board.render()
-        if player_id == 1:
-            player_id = 2
-        else:
-            player_id = 1
+        player_id = - player_id
     print(cnt)
 
 def get(i: int, j: int) -> int:
@@ -82,7 +79,8 @@ if __name__ == "__main__":
 
     # Create agents
     agent = Agent(env.action_space, env.observation_space)
-    print(agent.R)
+
+    test_board()
 
     # Close environment
     env.close()

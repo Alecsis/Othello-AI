@@ -9,7 +9,7 @@ class OthelloEnv(gym.Env):
     Colors:
     0 is none
     1 is white
-    2 is black
+    -1 is black
     
     Actions:
     from 0 (first cell) to 63 (last cell) and 64 is "pass"
@@ -46,10 +46,7 @@ class OthelloEnv(gym.Env):
             reward = -1
 
         # 1 becomes 2 and 2 becomes 1
-        if self.current_player_id == 1:
-            self.current_player_id = 2
-        else:
-            self.current_player_id = 1
+        self.current_player_id = - self.current_player_id
 
         return observation, reward, done, {"next_player": self.current_player_id}
 

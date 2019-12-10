@@ -20,9 +20,9 @@ class Board():
         self.grid = np.zeros((self.GRID_SIZE, self.GRID_SIZE), dtype=int)
         # pattern in the center
         self.grid[3, 3] = 1
-        self.grid[3, 4] = 2
+        self.grid[3, 4] = -1
         self.grid[4, 4] = 1
-        self.grid[4, 3] = 2
+        self.grid[4, 3] = -1
 
     def linearize(self) -> np.array:
         return np.reshape(self.grid, self.GRID_SIZE ** 2)
@@ -242,7 +242,7 @@ class Board():
                     print(".", end=" ")
                 elif c == 1:
                     print("o", end=" ")
-                elif c == 2:
+                elif c == -1:
                     print("x", end=" ")
                 else:
                     print("?", end=" ")
