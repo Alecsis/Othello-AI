@@ -3,6 +3,7 @@ import numpy as np
 from gym import error, spaces, utils
 import keras
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from keras.engine.sequential import Sequential
 
 
 class Agent():
@@ -21,13 +22,14 @@ class Agent():
         model.add(Conv2D(64, kernel_size=(5, 5), strides=(1, 1),
                   activaton='relu', input_shape=t_input_shape))
         model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-        model.add(Conv2D(128, (5, 5), activation='relu')))
-        model.add(Flatten()))
+        model.add(Conv2D(128, (5, 5), activation='relu'))
+        model.add(Flatten())
         model.add(Dense(1000, activation = 'relu'))
-        model.add(Dense(t_output_shape[0])))
+        model.add(Dense(t_output_shape[0]))
         model.compile(  loss=keras.losses.categorical_crossentropy,
                         optimizer=keras.optimizers.SGD(learning_rate=0.01),
                         metrics=['accuracy'])
+        
         return model
 
     def get_action(self, t_observation):
