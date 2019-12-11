@@ -69,6 +69,8 @@ if __name__ == "__main__":
     agent = Agent(env.action_space, env.observation_space)
 
     # test_board()
-
+    observation = env.observation_space.sample()
+    print(observation)
+    
     # Close environment
     env.close()
